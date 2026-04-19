@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AppLock"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="30dp" />
+
+    <!-- Start Button -->
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Start AppLock" />
+
+    <Button
+        android:id="@+id/usePinBtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Use PIN"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Gallery Button -->
+    <Button
+        android:id="@+id/usePatternBtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Use Pattern" />
+
+    <Button
+        android:id="@+id/galleryBtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="View Intruder Photos"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Select Apps -->
+
+    <!-- 🔥 NEW BUTTON -->
+    <Button
+        android:id="@+id/selectAppsBtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Select Apps to Lock" />
+
+    <Button
+        android:id="@+id/registerFaceBtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Register Owner Face" />
+
+</LinearLayout>
