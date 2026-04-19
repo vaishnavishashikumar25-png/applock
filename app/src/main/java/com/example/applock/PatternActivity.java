@@ -6,15 +6,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.andrognito.patternlockview.PatternLockView;
-import com.andrognito.patternlockview.listener.PatternLockViewListener;
-import com.andrognito.patternlockview.utils.PatternLockUtils;
-
 import java.util.List;
 
 public class PatternActivity extends AppCompatActivity {
 
-    PatternLockView patternLockView;
+    PatternView patternLockView;
     boolean isRegister = false;
 
     @Override
@@ -28,16 +24,23 @@ public class PatternActivity extends AppCompatActivity {
 
         isRegister = !prefs.contains("pattern");
 
-        patternLockView.addPatternLockListener(new PatternLockViewListener() {
+        patternLockView.setOnPatternListener(new PatternView.OnPatternListener() {
             @Override public void onStarted() {}
-            @Override public void onProgress(List<PatternLockView.Dot> progressStack) {}
+            @Override public void onProgress(List<Integer> progressStack) {}
             @Override public void onCleared() {}
 
             @Override
-            public void onComplete(List<PatternLockView.Dot> pattern) {
-                String patternString = PatternLockUtils.patternToString(patternLockView, pattern);
+            public void onComplete(List<Integer> pattern) {
+                StringBuilder sb = new StringBuilder();
+                for (Integer i : pattern) sb.append(i);
+                String patternString = sb.toString();
 
                 if (isRegister) {
+                    if (pattern.size() < 4) {
+                        Toast.makeText(PatternActivity.this, "At least 4 dots required", Toast.LENGTH_SHORT).show();
+                        patternLockView.clearPattern();
+                        return;
+                    }
                     prefs.edit().putString("pattern", patternString).apply();
                     Toast.makeText(PatternActivity.this,
                             "Pattern saved", Toast.LENGTH_SHORT).show();
